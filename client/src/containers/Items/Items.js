@@ -5,7 +5,7 @@ import ItemCardList from "../../components/ItemCardList";
 const Items = props => {
   return (
     <div>
-      <ItemCardList />
+      <ItemCardList itemsData={props.itemsData}/>
     </div>
   )
 };

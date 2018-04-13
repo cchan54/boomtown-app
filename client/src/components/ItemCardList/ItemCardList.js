@@ -1,9 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ItemCard from "../ItemCard";
 
-const ItemCardList = () => {
+const ItemCardList = props => {
     return (
-        <ItemCard />
+        <ul>
+            {props.itemsData.map((item, index) => (
+            <li key={index}>
+                <ItemCard itemsData={item}/>
+            </li>
+            )
+        )
+    }
+        </ul>
     )
 }
 

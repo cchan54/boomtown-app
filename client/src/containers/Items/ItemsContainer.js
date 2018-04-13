@@ -33,7 +33,6 @@ class ItemsContainer extends Component {
             });
         });
         this.setState({ itemsData: arrayObj[0] });
-        console.log(this.state.itemsData);
       }
     );
   }
