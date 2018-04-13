@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import ItemCardList from "../../components/ItemCardList";
 
-
-const Items = () => {
+const Items = props => {
   return (
-    <h1>Items</h1>
-  );
-}
+    <div>
+      <ItemCardList />
+    </div>
+  )
+};
 
-export default Items
+export default Items;

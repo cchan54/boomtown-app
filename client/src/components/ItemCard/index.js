@@ -1,5 +1,3 @@
-import LoginContainer from './LoginContainer';
-import Login from './Login';
+import ItemCard from "./ItemCard";
 
-export { Login };
-export default LoginContainer;
+export default ItemCard;

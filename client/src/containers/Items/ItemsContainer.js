@@ -11,6 +11,7 @@ class ItemsContainer extends Component {
   }
 
   componentDidMount() {
+    // fetch JSON data and attach to state
     const urls = ["http://localhost:3000/items", "http://localhost:3000/users"];
 
     this.setState({ isLoading: true });
@@ -32,7 +33,7 @@ class ItemsContainer extends Component {
             });
         });
         this.setState({ itemsData: arrayObj[0] });
-        // console.log(this.state.itemsData);
+        console.log(this.state.itemsData);
       }
     );
   }
@@ -40,7 +41,7 @@ class ItemsContainer extends Component {
   render() {
     return (
       <div>
-        <Items />
+        <Items itemsData={this.state.itemsData}/>
       </div>
     );
   }
