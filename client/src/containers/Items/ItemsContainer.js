@@ -33,15 +33,15 @@ class ItemsContainer extends Component {
             });
         });
         this.setState({ itemsData: arrayObj[0] });
+        console.log(this.state.itemsData);
       }
     );
   }
 
   render() {
     return (
-      <div>
         <Items itemsData={this.state.itemsData}/>
-      </div>
+      
     );
   }
 }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import ItemCardList from "../../components/ItemCardList";
+import "./styles.css";
 
 const Items = props => {
   return (
-    <div>
+    <div className="itemsListCardWrapper">
       <ItemCardList itemsData={props.itemsData}/>
     </div>
   )
