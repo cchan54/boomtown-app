@@ -4,12 +4,7 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FlatButton from 'material-ui/FlatButton';
 import Gravatar from 'react-gravatar';
 import { Link } from 'react-router-dom';
-
-// const buttonStyle = {
-//     backgroundColor: "black",
-//     color: "white",
-//     fontSize: "14px"
-// }
+import "./styles.css";
 
 const ItemCard = props => {
     const item = props.itemsData;
@@ -18,9 +13,13 @@ const ItemCard = props => {
             <CardMedia>
                 <img src={item.imageurl} alt="" />
             </CardMedia>
-            <Link to={ { pathname: `/profile/${item.itemowner.id}`, state: {bio: item.itemowner.bio, email: item.itemowner.email, fullname: item.itemowner.fullname} }  }>
-                <CardHeader title={item.itemowner.fullname} avatar=""/>
-            </Link>
+            <Link to={`/profile/${item.itemowner.id}`}>
+            <CardHeader
+                className="itemCardGravatarImage"
+                avatar={<Gravatar email={'' || item.itemowner.email} />}
+                title={item.itemowner.fullname}
+            />
+        </Link>
             <CardTitle title = {item.title} />
             <CardText>
                 {item.description}

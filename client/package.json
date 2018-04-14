@@ -6,6 +6,7 @@
     "concurrently": "^3.5.0",
     "json-server": "^0.12.0",
     "material-ui": "^0.19.4",
+    "npm": "^5.8.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
