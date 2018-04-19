@@ -1,0 +1,23 @@
+.logoImage {
+  width: 30px;
+  margin: 5px 5px 5px 20px;
+}
+
+.appBarButton1 {
+  margin: 3px .5rem;
+}
+
+.appBarButton2 {
+  margin: 3px .5rem;
+}
+
+.logo-filter-container {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.header-button-container {
+  display:flex;
+  align-items: center;
+}

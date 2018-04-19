@@ -1,5 +1,15 @@
-import ProfileContainer from './ProfileContainer';
-import Profile from './Profile';
+import React from "react";
+import PropTypes from "prop-types";
+import { Card } from "material-ui/Card";
 
-export { Profile };
-export default ProfileContainer;
+import Items from "../Items/Items";
+
+const Profile = ({ Items }) => {
+  return (
+    <Card style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <h1>Profile</h1>
+    </Card>
+  )
+}
+
+export default Profile;

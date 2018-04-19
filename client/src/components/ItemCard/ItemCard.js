@@ -16,10 +16,10 @@ const ItemCard = props => {
             <Link to={`/profile/${item.itemowner.id}`}>
             <CardHeader
                 className="itemCardGravatarImage"
-                avatar={<Gravatar email={'' || item.itemowner.email} />}
+                avatar={<Gravatar email={item.itemowner.email} />}
                 title={item.itemowner.fullname}
             />
-        </Link>
+            </Link>
             <CardTitle title = {item.title} />
             <CardText>
                 {item.description}
