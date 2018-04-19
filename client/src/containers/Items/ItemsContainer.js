@@ -1,49 +1,25 @@
 import React, { Component } from "react";
 import Items from "./Items";
+import ItemCard from "../../components/ItemCard";
+import { connect } from "react-redux";
+import { fetchItemsAndUsers } from "../../redux/modules/items";
 
 class ItemsContainer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLoading: false,
-      itemsData: []
-    };
-  }
-
   componentDidMount() {
-    // fetch JSON data and attach to state
-    const urls = ["http://localhost:3000/items", "http://localhost:3000/users"];
-
-    this.setState({ isLoading: true });
-
-    let items = [];
-    let user = [];
-
-    Promise.all(urls.map(url => fetch(url)
-    .then(resp => resp.json())))
-    .then(arrayObj => {
-        // console.log(arrayObj);
-        items = arrayObj[0];
-        user = arrayObj[1];
-        items.map(item =>{
-        user.map(profile => {
-            if(profile.id === item.itemowner) {
-            item.itemowner = profile;
-                }
-            });
-        });
-        this.setState({ itemsData: arrayObj[0] });
-        console.log(this.state.itemsData);
-      }
-    );
+    this.props.dispatch(fetchItemsAndUsers());
   }
 
   render() {
-    return (
-        <Items itemsData={this.state.itemsData}/>
-      
+    return (       
+      (this.props.items) ? 
+        <Items itemsData={this.props.items}/>
+        : <p>Loading...</p>
     );
   }
 }
 
-export default ItemsContainer;
+export default connect(state => {
+  return {
+    items: state.items.items
+  }
+})(ItemsContainer);
