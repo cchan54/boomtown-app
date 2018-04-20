@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import Gravatar from 'react-gravatar';
 import { Link } from 'react-router-dom';
 import "./styles.css";
@@ -25,7 +25,7 @@ const ItemCard = props => {
                 {item.description}
             </CardText>
             <CardActions>
-                <FlatButton label="Borrow" />
+                <RaisedButton label="Borrow" secondary={true} />
             </CardActions>
         </Card>
     )

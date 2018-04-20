@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Card } from "material-ui/Card";
-
+import Gravatar from "react-gravatar";
 import Items from "../Items/Items";
 
 const Profile = ({ Items }) => {
   return (
-    <Card style={{ maxWidth: '800px', margin: '0 auto' }}>
+    <Card>
       <h1>Profile</h1>
     </Card>
   )
