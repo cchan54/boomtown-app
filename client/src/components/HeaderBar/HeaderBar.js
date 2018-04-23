@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../images/boomtown-logo.svg';
 import AppBar from 'material-ui/AppBar';
-import TagFilterField from '../TagFilterField';
 import RaisedButton from 'material-ui/RaisedButton';
-import { grey900 } from 'material-ui/styles/colors';
-import './styles.css';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import logo from '../../images/boomtown-logo.svg';
+import TagFilterField from '../TagFilterField';
+import './styles.css';
 import { fetchItemsAndUsers } from '../../redux/modules/items';
 
 class HeaderBar extends Component {

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Gravatar from 'material-ui';
 import { Card, CardTitle } from 'material-ui/Card';
 
 const Profile = props => (
