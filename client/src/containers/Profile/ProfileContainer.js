@@ -1,15 +1,56 @@
-import React from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import Profile from './Profile';
-import propTypes from "prop-types";
-import { connect } from "react-redux";
-import { fetchItemsAndUsers } from "../../redux/modules/items";
+import ItemCardList from '../../components/ItemCardList';
+import { fetchProfileItemsFromUrl } from '../../redux/modules/profile';
+import './styles.css';
 
-const ProfileContainer = props => {
-  // const { user } = props.data;
+class ProfileContainer extends Component {
+    componentDidMount() {
+        this.props.dispatch(
+            fetchProfileItemsFromUrl(this.props.match.params.itemownerId)
+        );
+    }
 
-  return <h1>profile</h1>
-  //   <Profile items={user.shareditems} user={user} />
-  // );
+    render() {
+        return (
+            <div>
+                <Profile
+                    className="profileContainer"
+                    profileInfo={this.props.location.state}
+                    itemInfo={this.props.itemsData.profileItems}
+                />
+                {this.props.itemsData.isLoading}
+                <ItemCardList itemsData={this.props.itemsData.profileItems} />
+                )
+            </div>
+        );
+    }
+}
+
+ProfileContainer.defaultProps = {
+    match: {}
 };
 
-export default ProfileContainer;
+export default connect(state => ({
+    itemsData: state.profileItems
+}))(ProfileContainer);
+
+ProfileContainer.propTypes = {
+    itemsData: PropTypes.objectOf(
+        PropTypes.oneOfType([PropTypes.array, PropTypes.bool, PropTypes.string])
+    ).isRequired,
+    location: PropTypes.objectOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    ).isRequired,
+    dispatch: PropTypes.func.isRequired,
+    match: PropTypes.objectOf(
+        PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.object,
+            PropTypes.string
+        ])
+    )
+};

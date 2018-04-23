@@ -1,15 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Card } from "material-ui/Card";
-import Gravatar from "react-gravatar";
-import Items from "../Items/Items";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Card, CardTitle, CardText } from 'material-ui/Card';
 
-const Profile = ({ Items }) => {
-  return (
+const Profile = props => (
     <Card>
-      <h1>Profile</h1>
+        <CardText style={{ width: '1000px', margin: '0 auto' }}>
+            <CardTitle title={props.itemInfo.length} subtitle="Items Shared" />
+            <CardTitle title={'0'} subtitle={'Items Borrowed'} />
+        </CardText>
     </Card>
-  )
-}
+);
+
+Profile.propTypes = {
+    itemInfo: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
 export default Profile;
