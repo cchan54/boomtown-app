@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardTitle, CardText } from 'material-ui/Card';
+import Gravatar from 'material-ui';
+import { Card, CardTitle } from 'material-ui/Card';
 
 const Profile = props => (
     <Card>
-        <CardText style={{ width: '1000px', margin: '0 auto' }}>
+        <CardTitle style={{ width: '1000px', margin: '0 auto' }}>
             <CardTitle title={props.itemInfo.length} subtitle="Items Shared" />
             <CardTitle title={'0'} subtitle={'Items Borrowed'} />
-        </CardText>
+        </CardTitle>
     </Card>
 );
 

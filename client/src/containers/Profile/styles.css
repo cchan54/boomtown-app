@@ -1,16 +1,3 @@
-.appContent {
-  margin: 25px auto;
-  width: auto;
-}
-
-.profileHeader {
-  width: 300px;
-}
-
-.profileContainer {
-  width: 1000px;
-}
-
 .login {
   align-items: center;
   justify-content: center;

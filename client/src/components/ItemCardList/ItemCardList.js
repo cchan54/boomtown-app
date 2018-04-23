@@ -1,21 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ItemCard from "../ItemCard";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ItemCard from '../ItemCard';
 import Masonry from 'react-masonry-component';
-import "./styles.css";
+import './styles.css';
 
-const ItemCardList = props => {
-    return (
-        <Masonry>
-            {props.itemsData.map((item, index) => (
+const ItemCardList = props => (
+    <Masonry>
+        {props.itemsData.map((item, index) => (
             <div className="itemsCardWrapper" key={index}>
-                <ItemCard itemsData={item}/>
+                <ItemCard itemsData={item} />
             </div>
-            )
-        )
-    }
-        </Masonry>
-    )
-}
+        ))}
+    </Masonry>
+);
 
 export default ItemCardList;
