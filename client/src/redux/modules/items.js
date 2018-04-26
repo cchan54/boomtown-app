@@ -43,7 +43,7 @@ const initialState = {
 // THUNK FETCH ACTION
 
 export const fetchItemsAndUsers = () => dispatch => {
-    const urls = ['http://localhost:3000/items', 'http://localhost:3000/users'];
+    const urls = ['http://localhost:3001/items', 'http://localhost:3001/users'];
 
     //  remove the logic
     const combineItemsAndUsers = itemsAndUsers => {
