@@ -5,21 +5,21 @@ const typeDefs = `
 
   type Item {
     id: ID!
-    title: String!
-    description: String!
-    tags: [String!]
-    itemowner: User!
-    created: String!
-    imageurl: String!
-    available: Boolean!
+    title: String
+    description: String
+    tags: [String]
+    itemowner: User
+    created: String
+    imageurl: String
+    available: Boolean
     borrower: User
   }
 
   type User {
-    id: ID!
-    fullname: String!
+    id: ID
+    fullname: String
     bio: String
-    email: String!
+    email: String
     owneditems: [Item]
     borroweditems: [Item]
   }

@@ -1,36 +1,66 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 import Items from './Items';
-import { fetchItemsAndUsers } from '../../redux/modules/items';
+// import { fetchItemsAndUsers } from '../../redux/modules/items';
 
-class ItemsContainer extends Component {
-    componentDidMount() {
-        this.props.dispatch(fetchItemsAndUsers());
-    }
-
-    filterItems = itemsData => {
-        if (itemsData.itemFilters.length > 0) {
-            const filteredItems = itemsData.items.filter(item => {
-                return item.tags.filter(tag =>
-                    itemsData.itemFilters.find(filter => filter === tag)
-                ).length;
-            });
-            return filteredItems;
+export const fetchItems = gql`
+    query fetchItems {
+        items {
+            id
+            title
+            description
+            imageurl
+            tags
+            itemowner {
+                id
+                fullname
+                email
+            }
+            created
+            available
+            borrower {
+                id
+                fullname
+                email
+            }
         }
-        return itemsData.items;
-    };
+    }
+`;
+class ItemsContainer extends Component {
+    // componentDidMount() {
+    //     this.props.dispatch(fetchItemsAndUsers());
+    // }
+
+    // filterItems = itemsData => {
+    //     if (itemsData.itemFilters.length > 0) {
+    //         const filteredItems = itemsData.items.filter(
+    //             item =>
+    //                 item.tags.filter(tag =>
+    //                     itemsData.itemFilters.find(filter => filter === tag)
+    //                 ).length
+    //         );
+    //         return filteredItems;
+    //     }
+    //     return itemsData.items;
+    // };
 
     render() {
-        return this.props.itemsData.isLoading ? (
-            <p>Loading...</p>
-        ) : (
-            <Items itemsData={this.filterItems(this.props.itemsData)} />
+        return (
+            <Query query={fetchItems}>
+                {({ loading, error, data: { items } }) => {
+                    if (loading) return <p>Loading</p>;
+                    if (error) return <p>Error Getting Items!</p>;
+
+                    return <Items itemsData={items} />;
+                }}
+            </Query>
         );
     }
 }
 
-export default connect(state => {
-    return {
-        itemsData: state.itemsData
-    };
-})(ItemsContainer);
+// const mapStateToProps = state => ({
+//     itemFilters: state.items.itemFilters
+// });
+
+export default ItemsContainer;

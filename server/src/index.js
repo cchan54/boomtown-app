@@ -7,6 +7,8 @@ import cors from "cors";
 const PORT = 3333;
 const app = express();
 
+app.use("*", cors());
+
 app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
 
 app.use(
@@ -15,8 +17,6 @@ app.use(
     endpointURL: "/graphql"
   })
 );
-
-app.use("*", cors());
 
 app.listen(PORT, err => {
   if (err) {
