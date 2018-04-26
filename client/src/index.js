@@ -5,6 +5,8 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { ApolloProvider } from 'react-apollo';
+import client from './config/apolloClient';
 
 import './index.css';
 import muiTheme from './config/theme';
@@ -14,13 +16,15 @@ import Routes from './routes';
 
 const Boomtown = () => (
     <MuiThemeProvider muiTheme={muiTheme}>
-        <Provider store={store}>
-            <Router>
-                <Layout>
-                    <Routes />
-                </Layout>
-            </Router>
-        </Provider>
+        <ApolloProvider client={client}>
+            <Provider store={store}>
+                <Router>
+                    <Layout>
+                        <Routes />
+                    </Layout>
+                </Router>
+            </Provider>
+        </ApolloProvider>
     </MuiThemeProvider>
 );
 
