@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import schema from "./schema";
 import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
+import cors from "cors";
 
 const PORT = 3333;
 const app = express();
@@ -14,6 +15,8 @@ app.use(
     endpointURL: "/graphql"
   })
 );
+
+app.use("*", cors());
 
 app.listen(PORT, err => {
   if (err) {
