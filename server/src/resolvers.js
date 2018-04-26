@@ -23,7 +23,7 @@ const resolveFunctions = {
         response.json()
       );
     },
-    borrower({ borrower }) {
+    async borrower({ borrower }) {
       return fetch(`${jsonAPI}/users/${borrower}`).then(response =>
         response.json()
       );

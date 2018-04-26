@@ -28,23 +28,6 @@ export const fetchItems = gql`
     }
 `;
 class ItemsContainer extends Component {
-    // componentDidMount() {
-    //     this.props.dispatch(fetchItemsAndUsers());
-    // }
-
-    // filterItems = itemsData => {
-    //     if (itemsData.itemFilters.length > 0) {
-    //         const filteredItems = itemsData.items.filter(
-    //             item =>
-    //                 item.tags.filter(tag =>
-    //                     itemsData.itemFilters.find(filter => filter === tag)
-    //                 ).length
-    //         );
-    //         return filteredItems;
-    //     }
-    //     return itemsData.items;
-    // };
-
     render() {
         return (
             <Query query={fetchItems}>
@@ -58,9 +41,5 @@ class ItemsContainer extends Component {
         );
     }
 }
-
-// const mapStateToProps = state => ({
-//     itemFilters: state.items.itemFilters
-// });
 
 export default ItemsContainer;
