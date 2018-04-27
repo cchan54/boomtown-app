@@ -40,6 +40,30 @@ const resolveFunctions = {
         response.json()
       );
     }
+  },
+  Mutation: {
+    addItem(root, args) {
+      const newItem = {
+        name: args.name,
+        title: args.title,
+        description: args.description,
+        imageurl: args.imageurl,
+        tags: args.tags,
+        itemowner: args.itemowner,
+        created: args.createdon,
+        available: args.available,
+        borrower: args.borrower
+      };
+
+      fetch(`${jsonAPI}/items`, {
+        body: JSON.stringify(newItem),
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        }
+      }).then(response => response.json());
+      return newItem;
+    }
   }
 };
 export default resolveFunctions;

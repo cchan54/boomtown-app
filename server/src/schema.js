@@ -31,7 +31,20 @@ const typeDefs = `
     user(id: ID!): User
   }
 
+  type Mutation {
+    addItem(
+        title: String
+        imageurl: String
+        itemowner: String!
+        description: String
+        tags: [String]
+        created: String
+        available: Boolean
+        borrower: String
+    ): Item
+  }
 `;
+
 export default makeExecutableSchema({
   typeDefs,
   resolvers

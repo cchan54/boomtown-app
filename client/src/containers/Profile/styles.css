@@ -4,6 +4,10 @@
   background: transparent;
 }
 
+.profileContainer {
+  width: 100%;
+}
+
 .login .cardContainer {
   width: 420px;
   max-width: 95%;
