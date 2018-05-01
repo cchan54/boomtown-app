@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import { getUserOwnedItems, getUserBorrowedItems } from "./jsonServer";
 
 const jsonAPI = "http://localhost:3001";
 
@@ -11,10 +12,10 @@ const resolveFunctions = {
       return fetch(`${jsonAPI}/users`).then(response => response.json());
     },
     item(root, { id }) {
-      return fetch(`${jsonAPI}/items/${id}`).then(response => response.json());
+      return context.loaders.getItems.load(id);
     },
     user(root, { id }) {
-      return fetch(`${jsonAPI}/users/${id}`).then(response => response.json());
+      return context.loaders.userItems.load(id);
     }
   },
   Item: {
@@ -30,15 +31,11 @@ const resolveFunctions = {
     }
   },
   User: {
-    owneditems({ id }) {
-      return fetch(`${jsonAPI}/items/?itemowner=${id}`).then(response =>
-        response.json()
-      );
+    owneditems({ id }, args, context) {
+      return context.loaders.UserOwnedItems.load(id);
     },
-    borroweditems({ id }) {
-      return fetch(`${jsonAPI}/items/?borrower=${id}`).then(response =>
-        response.json()
-      );
+    borroweditems({ id }, args, context) {
+      return context.loaders.UserBorrowedItems.load(id);
     }
   },
   Mutation: {
